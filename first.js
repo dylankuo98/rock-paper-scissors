@@ -4,6 +4,7 @@ let playerSelection = prompt('Rock, Paper, Scissors').toUpperCase();
 let computerSelection = getComputerChoice();
 
 
+
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() *3)
     switch (randomNumber) {
@@ -17,10 +18,9 @@ function getComputerChoice() {
 }
 
 
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-      return "Tie"
+      return "It's a Tie"
     }
     if (
       (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
@@ -28,7 +28,7 @@ function playRound(playerSelection, computerSelection) {
       (playerSelection === 'PAPER' && computerSelection === 'ROCK')
     ) {
       playerScore++
-      return "Win"
+      return "Player Wins"
     }
     if (
       (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
@@ -36,22 +36,27 @@ function playRound(playerSelection, computerSelection) {
       (computerSelection === 'PAPER' && playerSelection === 'ROCK')
     ) {
       computerScore++
-      return "Lose"
+      return "Computer Loses"
     }
   }
 
 function game() {
     for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt('Rock, Paper, Scissors').toUpperCase();
-        let computerSelection = getComputerChoice();
-        let currentRound = playRound(playerSelection, computerSelection);
-        if (currentRound == "You Win!") {
-            playerScore++;
-        } else if (currentRound == "You Lose!") {
-            computerScore++;
-        }
+    playerSelection = prompt('Rock, Paper, Scissors').toUpperCase();
+    console.log("You chose " + playerSelection)
+
+    computerSelection = getComputerChoice();
+    console.log("The computer chose " + computerSelection)
+
+    console.log(playRound(playerSelection, computerSelection));
     }
+        if (playerScore>computerScore) {
+            return "Game Over - Player Wins"
+        } if (playerScore<computerScore) {
+            return "Game Over - Computer Wins"
+        } if (playerScore==computerScore) {
+            return "Game Over - It's a Tie"
+        }
 }
 
-    
-console.log(playRound(playerSelection, computerSelection));
+console.log (game()); 
